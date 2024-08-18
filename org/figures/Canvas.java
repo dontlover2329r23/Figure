@@ -25,6 +25,26 @@ public class Canvas {
             System.out.println(shapeWithDepth.shape + " with depth " + shapeWithDepth.depth);
         }
     }
+    public void moveShapeUp(Shape shape) {
+        for (int i = 0; i < shapes.size(); i++) {
+            if (shapes.get(i).shape.equals(shape) && i > 0) {
+                ShapeWithDepth temp = shapes.get(i);
+                shapes.set(i, shapes.get(i - 1));
+                shapes.set(i - 1, temp);
+                break;
+            }
+        }
+    }
+    public void moveShapeDown(Shape shape) {
+        for (int i = 0; i < shapes.size(); i++) {
+            if (shapes.get(i).shape.equals(shape) && i < shapes.size() - 1) {
+                ShapeWithDepth temp = shapes.get(i);
+                shapes.set(i, shapes.get(i + 1));
+                shapes.set(i + 1, temp);
+                break;
+            }
+        }
+    }
 
     private static class ShapeWithDepth {
         Shape shape;
@@ -35,6 +55,4 @@ public class Canvas {
             this.depth = depth;
         }
     }
-
 }
-
